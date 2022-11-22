@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Sidebars · Bootstrap v5.2</title>
+    <title>Dashboard - Anzen</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sidebars/">
 
@@ -135,8 +135,6 @@
 </svg>
 
 <main class="d-flex flex-nowrap">
-  <h1 class="visually-hidden">Sidebars examples</h1>
-
   <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 200px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <svg width="40" height="32" fill="currentColor" class="bi bi-database" viewBox="0 0 16 16">
@@ -147,43 +145,43 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-          Home
+        <a href="filebrowser.html" class="nav-link text-white" aria-current="page">
+          <img class="bi pe-none me-2" src="asset/home.svg">
+          File Browser
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+        <a href="dashboard.html" class="nav-link active">
+          <img class="bi pe-none me-2" src="asset/layout.svg">
           Dashboard
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-          Orders
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-          Products
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-          Customers
+        <a href="profile.html" class="nav-link text-white">
+          <img class="bi pe-none me-2" src="asset/user.svg">
+          Profile 
         </a>
       </li>
     </ul>
     <hr>
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <img class="bi pe-none me-2" src="asset/user.svg">
         <strong>Daniel</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li>
+          <a class="dropdown-item" href="index.html">
+            <img class="bi pe-none me-2" src="asset/logout.svg">
+            Sign out
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="profile.html">
+            <img class="bi pe-none me-2" src="asset/user.svg">
+            Profile 
+          </a>
+        </li>
       </ul>
     </div>
   </div>
