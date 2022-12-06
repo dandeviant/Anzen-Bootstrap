@@ -24,13 +24,21 @@
         }
 
     </style>
+
+    
+
+
   </head>
   <body style="background-color: #3c3d3c;">
     
     <!-- vh-100 here-->
+    <?php 
+      $servername = "localhost";
+
+    ?>
     
     <div class="d-flex align-items-center justify-content-center vh-100 text-center">
-        <form href="dashboard.html">
+        <form href="dashboard.php">
         <img src="assets/hard-drive.svg" alt="database.svg"><p style="font-size: 30px; color: white;"> Anzen NAS</p>
         <p></p>
         
@@ -40,15 +48,16 @@
             <input type="email" class="form-control" id="floatingInput" placeholder="Username">
             <label for="floatingInput" style="color: white;">Username</label>
         </div>
+
         <div class="form-floating mb-3 form-control-md">
             <input type="email" class="form-control" id="floatingInput" placeholder="Username">
             <label for="floatingInput" style="color: white;">Password</label>
         </div>
-        <a href="dashboard.html" class="btn btn-primary">
+        <a href="dashboard.php" class="btn btn-primary">
           <img class="bi pe-none me-2" src="assets/login.svg">
           Sign In</a>
         <hr style="color: white;">
-        <a href="newprofile.html">Create New Profile</a><br>
+        <a href="newprofile.php">Create New Profile</a><br>
         <a href="#">Reset Password</a>
       </form>
     </div>

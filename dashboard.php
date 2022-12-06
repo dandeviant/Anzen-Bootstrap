@@ -143,7 +143,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="filebrowser.html">
+        <a href="filebrowser.php">
           <button class="btn btn-secondary" type="submit">
             <img class="bi pe-none me-2" src="assets/home.svg">
             File Browser
@@ -152,13 +152,13 @@
       </li>
       <hr>
       <li>
-        <a href="dashboard.html" class="nav-link active">
+        <a href="dashboard.php" class="nav-link active">
           <img class="bi pe-none me-2" src="assets/layout.svg">
           Dashboard
         </a>
       </li>
       <li>
-        <a href="profile.html" class="nav-link text-white">
+        <a href="profile.php" class="nav-link text-white">
           <img class="bi pe-none me-2" src="assets/user.svg">
           Profile 
         </a>
@@ -172,7 +172,7 @@
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
         <li>
-          <a class="dropdown-item" href="index.html">
+          <a class="dropdown-item" href="index.php">
             <img class="bi pe-none me-2" src="assets/logout.svg">
             Sign out
           </a>
