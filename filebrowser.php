@@ -112,15 +112,15 @@
         <hr>
       </div>
     </nav>
-  
+      
       <main class="col-md-9 ms-sm-auto col-lg-11 px-md-4" height="100%">
         <canvas class="my-4 w-100" id="myChart" width="200" height="5"></canvas>
         Current Directory: 
         <?php
+          chdir("uploads");
           echo getcwd()."\n";
         ?>
         <br><br>
-        
         <table style="border: 1px solid black; width: 100;">
         <div class="table-responsive">
           <table class="table table-striped table-sm">
@@ -129,25 +129,40 @@
                 <th scope="col">
                   <div class="input-group mb-3">
                       <a href="#upload">
-                      <button class="btn btn-primary" type="submit">
+                      <button class="btn btn-primary" type="submit" style="display: inline; vertical-align: middle;">
                       <img class="bi pe-none me-2" src="assets/layout.svg">
                       Upload
                       </button>
                       </a>
                   </div>  
                 </th>
-                <th scope="col">
-                  <div class="input-group mb-3">
-                    <a href="#newfolder">
-                      <div class="input-group-prepend">
-                        <button class="btn btn-primary" type="submit">
-                          <img class="bi pe-none me-2" src="assets/folder-plus.svg">
-                          New Folder
-                        </button>
-                      </div>
-                    </a>
-                    <input type="text" class="form-control">
-                  </div>
+                <th scope="col"> 
+                  <form method="post">
+                    <div class="container">
+                      <a href="#newfolder">
+                        <div class="input-group-prepend">
+                          <button class="btn btn-primary" type="submit" name="newfolder" value="newfolder">
+                            <img class="bi pe-none me-2" src="assets/folder-plus.svg">
+                            New Folder
+                          </button>
+                          <input type="text" class="form-control" style="width: 200px; display: inline; vertical-align: baseline;" placeholder="Folder Name" name="foldername">
+                        </div>
+                      </a>
+                      <?php
+                    if(isset($_POST['newfolder']))
+                    {
+                        $foldername= $_POST['foldername'];
+                        if ($foldername == null) {
+                          echo '<span class"pull-right">No folder name written</span>';
+                        }
+                        else{
+                          mkdir($foldername); 
+                        }     
+                    }
+                  ?>
+                    </div>
+                  </form>
+                  
                 </th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -169,46 +184,82 @@
                 <td></td>
               </tr>
             <?php
-              if ($handle = opendir('.'))
-                {
-                    while (false !== ($entry = readdir($handle))) {
-                        if ($entry != "." && $entry != "..") {
-                            echo "<tr>";
-                            echo "<td>";
-                            echo "$entry\n";
+                  $scan = scandir('.');
+                  foreach($scan as $entry) 
+                  {
+                        echo "<tr>";
+                        echo "<td>";
+                        echo $entry;
+                        echo "</td>";
+                        echo "<td>";
+                        if(!is_dir("./$entry")) {
+                            echo md5($entry);
                             echo "</td>";
                             echo "<td>";
-                            if(is_dir($entry)){
-                              echo '<a href="'.chdir($entry).'">Navigate</a>';
+                            echo '<a href="#download"><img class="bi pe-none me-2" src="assets/download-cloud.svg"></a>';
+                            echo "</td>";
+                            echo "<td>";
+                            echo '<img class="bi pe-none me-2" src="assets/trash-2.svg"></a>';
+                            echo "</td>";
+                            echo "</tr>";
+                        }    
+                        else {
+                            if($entry != "." and $entry != ".."){
+                              echo '<a href="#'.$entry.'">Navigate</a>';
                               echo "</td>";
                               echo "<td>";
                               echo "</td>";
                               echo "<td>";
                               echo "</td>";
-                              echo "<tr/>";
-                            }    
-                            else {
-                              echo md5($entry);
-                              echo "</td>";
-                              echo "<td>";
-                              echo '<a href="#download"><img class="bi pe-none me-2" src="assets/download-cloud.svg"></a>';
-                              echo "</td>";
-                              echo "<td>";
-                              echo '<img class="bi pe-none me-2" src="assets/trash-2.svg"></a>';
-                              echo "</td>";
-                              echo "<tr/>";
+                              echo "</tr>";
                             }
-                              
+                            else {
+                              echo "</td>";
+                              echo "<td>";
+                              echo "</td>";
+                              echo "<td>";
+                              echo "</td>";
+                              echo "</tr>";
+                            }
+                            
                         }
-                    }
 
-                    closedir($handle);
-                }
+                    }  
+                    // while (false !== ($entry = readdir($handle))) {
+                    //     if ($entry != "." && $entry != "..") {
+                    //         echo "<tr>";
+                    //         echo "<td>";
+                    //         echo "$entry\n";
+                    //         echo "</td>";
+                    //         echo "<td>";
+                    //         if(is_dir($entry)){
+                    //           echo '<a href="'.chdir($entry).'">Navigate</a>';
+                    //           echo "</td>";
+                    //           echo "<td>";
+                    //           echo "</td>";
+                    //           echo "<td>";
+                    //           echo "</td>";
+                    //           echo "<tr/>";
+                    //         }    
+                    //         else {
+                    //           echo md5($entry);
+                    //           echo "</td>";
+                    //           echo "<td>";
+                    //           echo '<a href="#download"><img class="bi pe-none me-2" src="assets/download-cloud.svg"></a>';
+                    //           echo "</td>";
+                    //           echo "<td>";
+                    //           echo '<img class="bi pe-none me-2" src="assets/trash-2.svg"></a>';
+                    //           echo "</td>";
+                    //           echo "<tr/>";
+                    //         }
+                              
+
             ?>
             </tbody>
           </table>
+          <canvas class="my-4 w-100" id="myChart" width="300" height="10000"></canvas>
         </div>
-        <canvas class="my-4 w-100" id="myChart" width="300" height="300"></canvas>
+        
       </main>
   </div>
 </div>

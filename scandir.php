@@ -1,6 +1,18 @@
 <?php
-   $path    = '.';
-   $files = scandir($path);
-   $files = array_diff(scandir($path), array('.', '..'));
+
+   $scan = scandir('.');
+   foreach($scan as $file) {
+      if (!is_dir("./$file")) {
+         echo $file.'<br>';
+      }
+      else {
+         echo $file." is a Folder";
+         echo "<br>";
+      }
+
+   }
+
 ?>
-<input class="form-control col-xs-1" id="ex1" type="text">
+<script>
+   document.write("Hello World");
+</script>
