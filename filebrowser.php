@@ -108,44 +108,103 @@
 <div class="container-fluid">
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-1 d-md-block sidebar collapse" style="background-color: #02355e;">
-      <div class="position-sticky pt-3 sidebar-sticky">
+      <div class="position-fixed pt-3 sidebar-sticky">
         <hr>
       </div>
     </nav>
   
-      <main class="col-md-9 ms-sm-auto col-lg-11 px-md-4" height="10000">
-        <canvas class="my-4 w-100" id="myChart" width="200" height="10"></canvas>
-
-        <h2>parent</h2>
+      <main class="col-md-9 ms-sm-auto col-lg-11 px-md-4" height="100%">
+        <canvas class="my-4 w-100" id="myChart" width="200" height="5"></canvas>
+        Current Directory: 
+        <?php
+          echo getcwd()."\n";
+        ?>
+        <br><br>
+        
+        <table style="border: 1px solid black; width: 100;">
         <div class="table-responsive">
           <table class="table table-striped table-sm">
             <thead>
+            <tr>
+                <th scope="col">
+                  <div class="input-group mb-3">
+                      <a href="#upload">
+                      <button class="btn btn-primary" type="submit">
+                      <img class="bi pe-none me-2" src="assets/layout.svg">
+                      Upload
+                      </button>
+                      </a>
+                  </div>  
+                </th>
+                <th scope="col">
+                  <div class="input-group mb-3">
+                    <a href="#newfolder">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-primary" type="submit">
+                          <img class="bi pe-none me-2" src="assets/folder-plus.svg">
+                          New Folder
+                        </button>
+                      </div>
+                    </a>
+                    <input type="text" class="form-control">
+                  </div>
+                </th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Size</th>
-                <th scope="col">Ownership</th>
+                <th scope="col">File Name</th>
+                <th scope="col">md5</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>sample.jpeg</td>
-                <td>data</td>
-                <td>daniel</td>
+            <tr>
+                <td>
+                  <a href="#above">One Folder Up</a>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>test.txt</td>
-                <td>irrelevant</td>
-                <td>daniel</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>data.docx</td>
-                <td>rich</td>
-                <td>daniel</td>
-              </tr>              
+            <?php
+              if ($handle = opendir('.'))
+                {
+                    while (false !== ($entry = readdir($handle))) {
+                        if ($entry != "." && $entry != "..") {
+                            echo "<tr>";
+                            echo "<td>";
+                            echo "$entry\n";
+                            echo "</td>";
+                            echo "<td>";
+                            if(is_dir($entry)){
+                              echo '<a href="'.chdir($entry).'">Navigate</a>';
+                              echo "</td>";
+                              echo "<td>";
+                              echo "</td>";
+                              echo "<td>";
+                              echo "</td>";
+                              echo "<tr/>";
+                            }    
+                            else {
+                              echo md5($entry);
+                              echo "</td>";
+                              echo "<td>";
+                              echo '<a href="#download"><img class="bi pe-none me-2" src="assets/download-cloud.svg"></a>';
+                              echo "</td>";
+                              echo "<td>";
+                              echo '<img class="bi pe-none me-2" src="assets/trash-2.svg"></a>';
+                              echo "</td>";
+                              echo "<tr/>";
+                            }
+                              
+                        }
+                    }
+
+                    closedir($handle);
+                }
+            ?>
             </tbody>
           </table>
         </div>
@@ -153,10 +212,6 @@
       </main>
   </div>
 </div>
-
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-      
+<script src="js/bootstrap.bundle.min.js"></script> 
   </body>
 </html>

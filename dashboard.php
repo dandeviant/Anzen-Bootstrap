@@ -163,6 +163,12 @@
           Profile 
         </a>
       </li>
+      <li>
+        <a href="profile.php" class="nav-link text-white">
+          <img class="bi pe-none me-2" src="assets/help.svg">
+          Help
+        </a>
+      </li>
     </ul>
     <hr>
     <div class="dropdown">
@@ -180,7 +186,6 @@
       </ul>
     </div>
   </div>
-
   
 </main>
 
